@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  mfm-db-postgres:
+    image: postgres:14.2
+    container_name: mfm-db-postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+      POSTGRES_DB: mfm
+    ports:
+      - "5432:5432"
+    networks:
+      - mfm-db-network
+
+networks:
+  mfm-db-network:
