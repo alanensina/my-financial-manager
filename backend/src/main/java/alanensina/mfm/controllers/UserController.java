@@ -30,11 +30,6 @@ public class UserController {
         return service.findById(id);
     }
 
-    @GetMapping("/users")
-    public ResponseEntity<List<User>> list(){
-        return service.listAll();
-    }
-
     @PutMapping("/user")
     public ResponseEntity<User> update(@RequestBody @Valid UserRecordUpdateDTO dto){
         return service.update(dto);
