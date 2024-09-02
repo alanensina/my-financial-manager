@@ -1,14 +1,13 @@
 package alanensina.mfm.controllers;
 
-import alanensina.mfm.dtos.UserRecordSaveDTO;
-import alanensina.mfm.dtos.UserRecordUpdateDTO;
+import alanensina.mfm.dtos.user.UserRecordSaveDTO;
+import alanensina.mfm.dtos.user.UserRecordUpdateDTO;
 import alanensina.mfm.models.User;
 import alanensina.mfm.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -25,8 +24,8 @@ public class UserController {
         return service.save(dto);
     }
 
-    @GetMapping("/user/{id}")
-    public ResponseEntity<User> findById(@PathVariable("id") UUID id){
+    @GetMapping("/user")
+    public ResponseEntity<User> findById(@RequestParam("id") UUID id){
         return service.findById(id);
     }
 
@@ -35,8 +34,8 @@ public class UserController {
         return service.update(dto);
     }
 
-    @DeleteMapping("/user/{id}")
-    public ResponseEntity<String> deleteById(@PathVariable("id") UUID id){
+    @DeleteMapping("/user")
+    public ResponseEntity<String> deleteById(@RequestParam("id") UUID id){
         return service.deleteById(id);
     }
 }

@@ -1,11 +1,13 @@
 package alanensina.mfm.services;
 
-import alanensina.mfm.dtos.UserRecordSaveDTO;
-import alanensina.mfm.dtos.UserRecordUpdateDTO;
+import alanensina.mfm.dtos.user.UserRecordSaveDTO;
+import alanensina.mfm.dtos.user.UserRecordUpdateDTO;
 import alanensina.mfm.exceptions.user.DeleteUserException;
 import alanensina.mfm.exceptions.user.SaveUserException;
 import alanensina.mfm.exceptions.user.UpdateUserException;
+import alanensina.mfm.exceptions.user.UserNotFoundException;
 import alanensina.mfm.models.User;
+import alanensina.mfm.models.Wallet;
 import alanensina.mfm.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
@@ -27,8 +29,10 @@ public class UserService {
     @Transactional
     public ResponseEntity<User> save(UserRecordSaveDTO dto) {
         var user = new User();
+        var wallet = new Wallet();
         BeanUtils.copyProperties(dto, user);
         user.setPassword(encryptPassword(user.getPassword()));
+        user.setWallet(wallet);
 
         try{
             user = userRepository.save(user);
@@ -50,7 +54,7 @@ public class UserService {
         var opt = userRepository.findById(dto.id());
 
         if(opt.isEmpty()){
-            throw new UpdateUserException("User ID not found: " + dto.id());
+            throw new UserNotFoundException("User ID not found: " + dto.id());
         }
 
         var updatedUser = new User();

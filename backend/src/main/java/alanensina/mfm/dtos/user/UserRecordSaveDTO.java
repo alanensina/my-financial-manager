@@ -1,13 +1,9 @@
-package alanensina.mfm.dtos;
+package alanensina.mfm.dtos.user;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
-import java.util.UUID;
-
-public record UserRecordUpdateDTO(
-        @NotNull UUID id,
+public record UserRecordSaveDTO(
         @NotBlank String name,
         @NotBlank String password,
         @NotBlank @Email String email) {
