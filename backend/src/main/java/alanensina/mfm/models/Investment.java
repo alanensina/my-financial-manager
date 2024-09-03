@@ -23,7 +23,9 @@ public class Investment {
     private String code;
     @Enumerated(EnumType.STRING)
     private InvestmentType type;
-    private LocalDateTime date;
+    private LocalDateTime createdAt;
+    private LocalDateTime lastUpdate;
+    private LocalDateTime soldtAt;
     private BigDecimal startPrice;
     private BigDecimal endPrice;
     private BigDecimal quantity;
@@ -72,12 +74,28 @@ public class Investment {
         this.type = type;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(LocalDateTime lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public LocalDateTime getSoldtAt() {
+        return soldtAt;
+    }
+
+    public void setSoldtAt(LocalDateTime soldtAt) {
+        this.soldtAt = soldtAt;
     }
 
     public BigDecimal getStartPrice() {

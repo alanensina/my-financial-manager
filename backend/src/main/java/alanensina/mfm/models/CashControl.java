@@ -25,7 +25,8 @@ public class CashControl {
     private Wallet wallet;
 
     private String description;
-    private LocalDateTime date;
+    private LocalDateTime createdAt;
+    private LocalDateTime lastUpdate;
     private BigDecimal value;
 
     public UUID getId() {
@@ -60,12 +61,20 @@ public class CashControl {
         this.description = description;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(LocalDateTime lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 
     public BigDecimal getValue() {

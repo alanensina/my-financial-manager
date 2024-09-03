@@ -38,7 +38,7 @@ public class UserService {
             user = userRepository.save(user);
             return ResponseEntity.status(HttpStatus.CREATED).body(user);
         }catch (Exception e){
-            throw new SaveUserException(e.getMessage());
+            throw new SaveUserException("Error to save an user. Error: " + e.getMessage());
         }
     }
 
