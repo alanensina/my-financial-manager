@@ -1,0 +1,37 @@
+<div class="container">
+
+    <img src="assets/images/logo.png" class="logo">
+
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <p>
+            <mat-form-field appearance="fill">
+            <mat-label></mat-label>
+            <input matInput placeholder="email" formControlName="email">
+            <mat-hint>Email</mat-hint>
+            <small class="text-danger" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">Email is required.</small>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill">
+            <mat-label></mat-label>
+            <input matInput type="password" placeholder="password" formControlName="password">
+            <mat-hint>Password</mat-hint>
+            <small class="text-danger" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">Password is required.</small>
+            </mat-form-field>
+        </p>
+        
+        <section>
+            <div class="example-button-row">
+            <button mat-raised-button color="primary" [disabled]="loginForm.invalid">Login</button>
+            <a mat-raised-button color="warn" (click)="newUser()">Create account</a>
+            </div>
+        </section>
+    </form>    
+</div>
+
+<footer class="footer">
+    <mat-label>Developed by: Alan Ensina - 2024</mat-label>
+</footer>
+
