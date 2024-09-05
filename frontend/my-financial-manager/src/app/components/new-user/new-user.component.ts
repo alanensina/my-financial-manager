@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { NewUserService } from '../../services/new-user/new-user.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-new-user',
@@ -11,17 +12,16 @@ import { NewUserService } from '../../services/new-user/new-user.service';
 })
 export class NewUserComponent implements OnInit{
 
-  loginForm: FormGroup = new FormGroup({});
+  newUserForm: FormGroup = new FormGroup({});
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private activatedRouter: ActivatedRoute,
     private newUserService: NewUserService 
   ){}
 
   ngOnInit(){
-    this.loginForm = this.formBuilder.group({
+    this.newUserForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -29,8 +29,13 @@ export class NewUserComponent implements OnInit{
   }
 
   onSubmit(){
-    if(this.loginForm.valid){
-      
+    if(this.newUserForm.valid){
+      let user: User = this.newUserForm.value;
+
+      this.newUserService.addUser(user).subscribe(() => {
+        console.log("User added: " + user);
+        this.cancel();
+      }); 
     }     
   }
 

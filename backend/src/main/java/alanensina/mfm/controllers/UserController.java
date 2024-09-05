@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
+@RequestMapping("/api/user")
 public class UserController {
 
     private final UserService service;
@@ -19,22 +20,22 @@ public class UserController {
         this.service = service;
     }
 
-    @PostMapping("/user")
+    @PostMapping
     public ResponseEntity<User> save(@RequestBody @Valid UserRecordSaveDTO dto){
         return service.save(dto);
     }
 
-    @GetMapping("/user")
+    @GetMapping
     public ResponseEntity<User> findById(@RequestParam("id") UUID id){
         return service.findById(id);
     }
 
-    @PutMapping("/user")
+    @PutMapping
     public ResponseEntity<User> update(@RequestBody @Valid UserRecordUpdateDTO dto){
         return service.update(dto);
     }
 
-    @DeleteMapping("/user")
+    @DeleteMapping
     public ResponseEntity<String> deleteById(@RequestParam("id") UUID id){
         return service.deleteById(id);
     }
