@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+import static alanensina.mfm.utils.Utils.FRONTEND_URL;
+
+@CrossOrigin(origins = FRONTEND_URL)
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
