@@ -19,8 +19,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+import static alanensina.mfm.utils.Utils.INVESTMENT_NOT_FOUND_ID;
+
 @Service
 public class InvestmentService {
+
 
     private final InvestimentRepository investimentRepository;
     private final UserRepository userRepository;
@@ -57,7 +60,7 @@ public class InvestmentService {
         var investmentOpt = investimentRepository.findById(id);
 
         if(investmentOpt.isEmpty()){
-            throw new InvestmentNotFoundException("Investment not found. ID: " + id);
+            throw new InvestmentNotFoundException(INVESTMENT_NOT_FOUND_ID + id);
         }
 
         return ResponseEntity.status(HttpStatus.OK).body(investmentOpt.get());
@@ -84,7 +87,7 @@ public class InvestmentService {
         var oldInvestmentOpt = investimentRepository.findById(dto.id());
 
         if(oldInvestmentOpt.isEmpty()){
-            throw new InvestmentNotFoundException("Investment not found. ID: " + dto.id());
+            throw new InvestmentNotFoundException(INVESTMENT_NOT_FOUND_ID + dto.id());
         }
 
         var updatedInvestment = oldInvestmentOpt.get();
@@ -107,7 +110,7 @@ public class InvestmentService {
         var investmentOpt = investimentRepository.findById(id);
 
         if(investmentOpt.isEmpty()){
-            throw new InvestmentNotFoundException("Investment not found. ID: " + id);
+            throw new InvestmentNotFoundException(INVESTMENT_NOT_FOUND_ID + id);
         }
 
         try{

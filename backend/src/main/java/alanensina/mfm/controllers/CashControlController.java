@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+import static alanensina.mfm.utils.Utils.FRONTEND_URL;
+
+@CrossOrigin(origins = FRONTEND_URL)
 @RestController
+@RequestMapping("/api/cash-control")
 public class CashControlController {
 
     private final CashControlService cashControlService;
@@ -20,27 +24,27 @@ public class CashControlController {
         this.cashControlService = cashControlService;
     }
 
-    @PostMapping("/cash-control/save")
+    @PostMapping
     public ResponseEntity<CashControl> save(@RequestParam UUID userId, @RequestBody @Valid CashControlSaveDTO dto){
         return cashControlService.save(userId, dto);
     }
 
-    @GetMapping("/cash-control/list")
+    @GetMapping("/list")
     public ResponseEntity<List<CashControl>> listByUser(@RequestParam UUID userId){
         return cashControlService.listAllCashControlEntriesByUserId(userId);
     }
 
-    @PutMapping("/cash-control/update")
+    @PutMapping
     public ResponseEntity<CashControl> update(@RequestBody @Valid CashControlUpdateDTO dto){
         return cashControlService.update(dto);
     }
 
-    @GetMapping("/cash-control")
+    @GetMapping
     public ResponseEntity<CashControl> findById(@RequestParam("id") UUID id){
         return cashControlService.findById(id);
     }
 
-    @DeleteMapping("/cash-control")
+    @DeleteMapping
     public ResponseEntity<String> deleteById(@RequestParam("id") UUID id){
         return cashControlService.deleteById(id);
     }

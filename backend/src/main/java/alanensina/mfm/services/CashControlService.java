@@ -18,8 +18,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+import static alanensina.mfm.utils.Utils.CASH_CONTROL_NOT_FOUND_ID;
+
 @Service
 public class CashControlService {
+
 
     private final UserRepository userRepository;
     private final CashControlRepository cashControlRepository;
@@ -73,7 +76,7 @@ public class CashControlService {
         var oldCashControlOpt = cashControlRepository.findById(dto.id());
 
         if(oldCashControlOpt.isEmpty()){
-            throw new CashControlNotFoundException("Cash control not found. ID: " + dto.id());
+            throw new CashControlNotFoundException(CASH_CONTROL_NOT_FOUND_ID + dto.id());
         }
 
         var updatedCashControl = oldCashControlOpt.get();
@@ -94,7 +97,7 @@ public class CashControlService {
         var cashControlOpt = cashControlRepository.findById(id);
 
         if(cashControlOpt.isEmpty()){
-            throw new CashControlNotFoundException("Cash control not found. ID: " + id);
+            throw new CashControlNotFoundException(CASH_CONTROL_NOT_FOUND_ID + id);
         }
 
         var cashControl = cashControlOpt.get();
@@ -105,7 +108,7 @@ public class CashControlService {
         var cashControlOpt = cashControlRepository.findById(id);
 
         if(cashControlOpt.isEmpty()){
-            throw new CashControlNotFoundException("Cash control not found. ID: " + id);
+            throw new CashControlNotFoundException(CASH_CONTROL_NOT_FOUND_ID + id);
         }
 
         try{

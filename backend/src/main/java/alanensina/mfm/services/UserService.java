@@ -2,10 +2,7 @@ package alanensina.mfm.services;
 
 import alanensina.mfm.dtos.user.UserRecordSaveDTO;
 import alanensina.mfm.dtos.user.UserRecordUpdateDTO;
-import alanensina.mfm.exceptions.user.DeleteUserException;
-import alanensina.mfm.exceptions.user.SaveUserException;
-import alanensina.mfm.exceptions.user.UpdateUserException;
-import alanensina.mfm.exceptions.user.UserNotFoundException;
+import alanensina.mfm.exceptions.user.*;
 import alanensina.mfm.models.User;
 import alanensina.mfm.models.Wallet;
 import alanensina.mfm.repositories.UserRepository;
@@ -34,12 +31,21 @@ public class UserService {
         user.setPassword(encryptPassword(user.getPassword()));
         user.setWallet(wallet);
 
+        if(isAnInvalidEmail(user.getEmail())){
+            throw new InvalidEmailException("Email already exists.");
+        }
+
         try{
             user = userRepository.save(user);
             return ResponseEntity.status(HttpStatus.CREATED).body(user);
         }catch (Exception e){
             throw new SaveUserException("Error to save an user. Error: " + e.getMessage());
         }
+    }
+
+    private boolean isAnInvalidEmail(String email) {
+        var users = userRepository.findAllByEmail(email);
+        return !users.isEmpty();
     }
 
     public ResponseEntity<User> findById(UUID id) {

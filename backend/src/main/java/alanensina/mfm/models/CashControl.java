@@ -4,13 +4,14 @@ import alanensina.mfm.enums.CashControlType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
 @Table(name="CASH_CONTROL")
-public class CashControl {
+public class CashControl implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

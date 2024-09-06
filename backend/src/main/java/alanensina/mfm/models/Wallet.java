@@ -3,13 +3,14 @@ package alanensina.mfm.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name="WALLETS")
-public class Wallet {
+public class Wallet implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

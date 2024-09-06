@@ -14,12 +14,14 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
+import { PopupComponent } from './components/utils/popup/popup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    NewUserComponent    
+    NewUserComponent,
+    PopupComponent    
   ],
   imports: [
     BrowserModule,

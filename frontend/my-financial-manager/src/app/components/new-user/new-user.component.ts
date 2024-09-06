@@ -4,6 +4,7 @@ import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NewUserService } from '../../services/new-user/new-user.service';
 import { User } from '../../models/user';
+import { UtilsService } from '../../services/utils/utils.service';
 
 @Component({
   selector: 'app-new-user',
@@ -17,7 +18,8 @@ export class NewUserComponent implements OnInit{
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private newUserService: NewUserService 
+    private newUserService: NewUserService,
+    private utilsService: UtilsService
   ){}
 
   ngOnInit(){
@@ -32,19 +34,21 @@ export class NewUserComponent implements OnInit{
     if(this.newUserForm.valid){
       let user: User = this.newUserForm.value;
 
-      this.newUserService.addUser(user).subscribe(() => {
-        console.log("User added: " + user);
-        this.cancel();
+      this.newUserService.addUser(user).subscribe({
+        next: data =>{
+          this.utilsService.displayMessage('User saved sucessfully!');
+          this.cancel();
+        }, error: err=>{
+
+          if(err.message === '400'){
+            this.utilsService.displayMessage('Error to create the user. Email already registered.');
+          }
+        }
       }); 
     }     
-  }
-
-  newUser(){
-    this.router.navigate(['/new-user']);
   }
 
   cancel(){
     this.router.navigate(['']);
   }
-
 }

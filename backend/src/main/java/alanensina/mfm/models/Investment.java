@@ -3,13 +3,18 @@ package alanensina.mfm.models;
 import alanensina.mfm.enums.InvestmentType;
 import jakarta.persistence.*;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
 @Table(name="INVESTMENTS")
-public class Investment {
+public class Investment implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 2L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

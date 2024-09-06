@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+import static alanensina.mfm.utils.Utils.FRONTEND_URL;
+
+@CrossOrigin(origins = FRONTEND_URL)
 @RestController
+@RequestMapping("/api/investment")
 public class InvestmentController {
 
     private final InvestmentService investmentService;
@@ -20,27 +24,27 @@ public class InvestmentController {
         this.investmentService = investmentService;
     }
 
-    @PostMapping("/investment")
+    @PostMapping
     public ResponseEntity<Investment> save(@RequestParam UUID userId, @RequestBody @Valid InvestmentRecordSaveDTO dto){
         return investmentService.save(userId, dto);
     }
 
-    @GetMapping("/investment")
+    @GetMapping
     public ResponseEntity<Investment> findById(@RequestParam("id") UUID id){
         return investmentService.findById(id);
     }
 
-    @GetMapping("/investment/list")
+    @GetMapping("/list")
     public ResponseEntity<List<Investment>> listByUser(@RequestParam UUID userId){
         return investmentService.listAllInvestmentsByUserId(userId);
     }
 
-    @PutMapping("/investment")
+    @PutMapping
     public ResponseEntity<Investment> update(@RequestBody @Valid InvestmentRecordUpdateDTO dto){
         return investmentService.update(dto);
     }
 
-    @DeleteMapping("/investment")
+    @DeleteMapping
     public ResponseEntity<String> deleteById(@RequestParam("id") UUID id){
         return investmentService.deleteById(id);
     }
