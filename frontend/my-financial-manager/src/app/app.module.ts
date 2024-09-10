@@ -15,13 +15,15 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { PopupComponent } from './components/utils/popup/popup.component';
+import { MainMenuComponent } from './components/main-menu/main-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NewUserComponent,
-    PopupComponent    
+    PopupComponent,
+    MainMenuComponent    
   ],
   imports: [
     BrowserModule,
