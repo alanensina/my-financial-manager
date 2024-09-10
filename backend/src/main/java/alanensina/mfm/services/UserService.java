@@ -44,7 +44,7 @@ public class UserService {
     }
 
     private boolean isAnInvalidEmail(String email) {
-        var users = userRepository.findAllByEmail(email);
+        var users = userRepository.findByEmail(email);
         return !users.isEmpty();
     }
 
