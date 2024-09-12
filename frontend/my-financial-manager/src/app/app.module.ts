@@ -35,7 +35,7 @@ import { MainMenuComponent } from './components/main-menu/main-menu.component';
     MatInputModule,
     MatDividerModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
 
   ],
   providers: [provideAnimations()],

@@ -38,8 +38,9 @@ export class NewUserComponent implements OnInit{
         next: data =>{
           this.utilsService.displayMessage('User saved sucessfully!');
           this.cancel();
-        }, error: err=>{
-
+        }, 
+        
+        error: err=>{
           if(err.message === '400'){
             this.utilsService.displayMessage('Error to create the user. Email already registered.');
           }
