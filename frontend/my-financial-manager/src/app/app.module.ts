@@ -9,12 +9,12 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
-import { PopupComponent } from './components/utils/popup/popup.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
 
 @NgModule({
@@ -22,7 +22,6 @@ import { MainMenuComponent } from './components/main-menu/main-menu.component';
     AppComponent,
     LoginComponent,
     NewUserComponent,
-    PopupComponent,
     MainMenuComponent    
   ],
   imports: [
@@ -36,6 +35,7 @@ import { MainMenuComponent } from './components/main-menu/main-menu.component';
     MatDividerModule,
     MatButtonModule,
     HttpClientModule,
+    MatSnackBarModule
 
   ],
   providers: [provideAnimations()],

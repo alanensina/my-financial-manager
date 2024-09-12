@@ -1,18 +1,17 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { PopupComponent } from '../../components/utils/popup/popup.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilsService {
 
+  private _snackBar = inject(MatSnackBar);
+
   constructor(private dialog: MatDialog ) { }
 
-  displayMessage(message :any){
-    this.dialog.open(PopupComponent,{
-      width:'200px',
-      data: message
-    })
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'Close');
   }
 }

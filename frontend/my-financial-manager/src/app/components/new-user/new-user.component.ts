@@ -36,13 +36,13 @@ export class NewUserComponent implements OnInit{
 
       this.newUserService.addUser(user).subscribe({
         next: data =>{
-          this.utilsService.displayMessage('User saved sucessfully!');
+          this.utilsService.openSnackBar('User saved sucessfully!');
           this.cancel();
         }, 
         
         error: err=>{
           if(err.message === '400'){
-            this.utilsService.displayMessage('Error to create the user. Email already registered.');
+            this.utilsService.openSnackBar('Error: Email already registered.');
           }
         }
       }); 
