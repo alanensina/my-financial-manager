@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, computed, OnInit, signal } from '@angular/core';
 import { MenuService } from '../../services/main-menu/menu.service';
 
 @Component({
@@ -9,6 +9,9 @@ import { MenuService } from '../../services/main-menu/menu.service';
 export class MainMenuComponent implements OnInit{
 
   user: any;
+  currentDate: Date = new Date();
+  collapsed = signal(false);
+  sideNavWidth = computed(() => this.collapsed() ? '65px' : '250px');
 
   constructor(
     private menuService: MenuService
@@ -17,5 +20,8 @@ export class MainMenuComponent implements OnInit{
 
   ngOnInit(): void {
     this.user = this.menuService.getUser();
+    setInterval(() => {
+      this.currentDate = new Date();
+    }, 1000);
   }
 }

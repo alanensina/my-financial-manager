@@ -1,7 +1,16 @@
-<p>main-menu works!</p>
-<br>
-<div>
-    {{user.id}}
-    {{user.name}}
-    {{user.wallet.id}}
-</div>
+<mat-toolbar class="mat-elevation-z3">
+    <button mat-icon-button (click)="collapsed.set(!collapsed())">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-label>My Financial Manager</mat-label>
+    <span class="spacer"></span>
+    <span>{{ currentDate | date: 'dd/MM/yyyy, HH:mm:ss' }}</span>
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav opened mode="side" [style.width]="sideNavWidth()">
+        <app-custom-sidenav [collapsed]="collapsed()"/>
+    </mat-sidenav>
+    <mat-sidenav-content class="content" [style.margin-left]="sideNavWidth()">
+        <router-outlet />
+    </mat-sidenav-content>
+</mat-sidenav-container>
