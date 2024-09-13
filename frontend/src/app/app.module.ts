@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatButtonModule} from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -53,7 +53,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MatSidenavModule,
     MatToolbarModule,
     MatListModule
-
   ],
   providers: [provideAnimations()],
   bootstrap: [AppComponent]

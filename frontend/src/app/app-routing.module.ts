@@ -10,7 +10,7 @@ import { CashControlListComponent } from './components/cash-control/cash-control
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full' ,component: LoginComponent },
+  { path: '', pathMatch: 'full', component: LoginComponent },
   { path: 'new-user', component: NewUserComponent },
   { path: 'home', component: MainMenuComponent },
   { path: 'investments/new', component: InvestmentCreateComponent },
@@ -18,7 +18,6 @@ const routes: Routes = [
   { path: 'cash-control/new', component: CashControlCreateComponent },
   { path: 'home/cash-control', component: CashControlListComponent },
   { path: 'home/dashboard', component: DashboardComponent },
-
 ];
 
 @NgModule({

@@ -2,15 +2,16 @@
     <button mat-icon-button (click)="collapsed.set(!collapsed())">
         <mat-icon>menu</mat-icon>
     </button>
+    <img src="assets/images/logo.png" class="logo-toolbar">
     <mat-label>My Financial Manager</mat-label>
     <span class="spacer"></span>
-    <span>{{ currentDate | date: 'dd/MM/yyyy, HH:mm:ss' }}</span>
+    <span class="datetime">{{ currentDate | date: 'dd/MM/yyyy, HH:mm:ss' }}</span>
 </mat-toolbar>
 <mat-sidenav-container>
     <mat-sidenav opened mode="side" [style.width]="sideNavWidth()">
-        <app-custom-sidenav [collapsed]="collapsed()"/>
+        <app-custom-sidenav [collapsed]="collapsed()" />
     </mat-sidenav>
     <mat-sidenav-content class="content" [style.margin-left]="sideNavWidth()">
-        <router-outlet />
+        <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

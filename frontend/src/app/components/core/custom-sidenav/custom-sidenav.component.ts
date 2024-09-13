@@ -7,18 +7,18 @@ import { MenuService } from '../../../services/main-menu/menu.service';
   templateUrl: './custom-sidenav.component.html',
   styleUrl: './custom-sidenav.component.css'
 })
-export class CustomSidenavComponent implements OnInit{
+export class CustomSidenavComponent implements OnInit {
 
   user: any;
 
   sideNavCollapsed = signal(false);
-  @Input() set collapsed(val: boolean){
+  @Input() set collapsed(val: boolean) {
     this.sideNavCollapsed.set(val)
-  } 
+  }
 
   constructor(
     private menuService: MenuService
-  ){}
+  ) { }
 
 
   ngOnInit(): void {
@@ -46,5 +46,5 @@ export class CustomSidenavComponent implements OnInit{
 
   profilePicSize = computed(() => this.sideNavCollapsed() ? '32' : '100');
 
-  
+
 }
