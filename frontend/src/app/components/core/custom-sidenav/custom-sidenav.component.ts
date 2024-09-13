@@ -37,7 +37,7 @@ export class CustomSidenavComponent implements OnInit{
       route: 'cash-control',
     },
     {
-      icon: 'monitoring',
+      icon: 'trending_up',
       label: 'Investments',
       route: 'investments',
     }
