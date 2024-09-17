@@ -18,9 +18,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
-import { CashControlCreateComponent } from './components/cash-control/cash-control-create/cash-control-create.component';
 import { InvestmentListComponent } from './components/investments/investment-list/investment-list.component';
-import { InvestmentCreateComponent } from './components/investments/investment-create/investment-create.component';
 import { CashControlListComponent } from './components/cash-control/cash-control-list/cash-control-list.component';
 import { CustomSidenavComponent } from './components/core/custom-sidenav/custom-sidenav.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -31,10 +29,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     LoginComponent,
     NewUserComponent,
     MainMenuComponent,
-    CashControlCreateComponent,
     CashControlListComponent,
     InvestmentListComponent,
-    InvestmentCreateComponent,
     CustomSidenavComponent,
     DashboardComponent
   ],
